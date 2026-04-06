@@ -14,10 +14,10 @@ interface InfluencerCardProps {
 
 export function InfluencerCard({ id, name, handle, followers, engagement, category, description }: Omit<InfluencerCardProps, 'avatar'>) {
   return (
-    <div className={`flex flex-col p-6 bg-card rounded-2xl border-2 border-foreground shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.1)] hover:-translate-y-1 transition-all h-full`}>
+    <div className={`flex flex-col p-6 bg-card rounded-2xl border-2 border-foreground shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(156,163,175,0.5)] hover:-translate-y-1 transition-all h-full`}>
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3 min-w-0">
-          <div className="p-2 bg-pastel-yellow dark:bg-accent/20 dark:border-accent/40 border-2 border-foreground rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.08)]">
+          <div className="p-2 bg-pastel-yellow dark:bg-accent/20 dark:border-accent/40 border-2 border-foreground rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.5)]">
             <Users className="w-5 h-5 text-foreground" />
           </div>
           <div className="min-w-0">

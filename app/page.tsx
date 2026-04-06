@@ -66,7 +66,7 @@ Track engagement, audience interaction, and campaign impact in seconds.
           </div>
 
           {/* Demo Section */}
-          <div className="w-full bg-card rounded-3xl border-2 border-border p-4 sm:p-8 animate-fade-in animation-delay-1000 shadow-[8px_8px_0px_0px_var(--border)]">
+          <div className="w-full bg-card rounded-3xl border-2 border-border p-4 sm:p-8 animate-fade-in animation-delay-1000 shadow-[8px_8px_0px_0px_var(--border)] dark:shadow-[8px_8px_0px_0px_rgba(156,163,175,0.4)]">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="flex flex-col justify-center">
                 <div className="inline-block mb-4">

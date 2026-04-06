@@ -51,15 +51,15 @@ export function HistoryCueCard({ id, name, handle, category, followers, engageme
                             </span>
                         </div>
 
-                        <div className="flex w-full justify-between items-center px-4 pt-4 pb-4 border-t border-border/50">
+                        <div className="flex w-full justify-between items-center px-4 pt-4 pb-6 border-t border-border/50">
                             <div className="flex flex-col items-center">
                                 <span className="text-xs text-foreground/60 font-bold uppercase">Followers</span>
                                 <span className="font-bold text-lg">{(followers / 1000).toFixed(0)}K</span>
                             </div>
                             <div className="h-8 w-px bg-foreground/20"></div>
                             <div className="flex flex-col items-center">
-                                <span className="text-xs text-foreground/60 font-bold uppercase">Engagement</span>
-                                <span className="font-bold text-lg text-primary">{engagement}%</span>
+                                <span className="text-xs text-foreground/60 font-bold uppercase">AI Score</span>
+                                <span className="font-bold text-lg text-primary">{engagement}</span>
                             </div>
                         </div>
 
@@ -73,23 +73,23 @@ export function HistoryCueCard({ id, name, handle, category, followers, engageme
                     </h3>
 
                     <div className="flex-grow overflow-y-auto space-y-3 custom-scrollbar pr-1">
-                        {collaborations.slice(0, 4).map((collab) => (
+                        {collaborations.slice(0, 1).map((collab) => (
                             <div key={collab.id} className="flex items-center gap-3 bg-secondary/5 p-2 rounded-lg border border-border/20">
                                 <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold text-xs border border-border/30">
                                     {collab.brandLogo}
                                 </div>
                                 <div className="flex-grow">
                                     <p className="font-bold text-sm text-foreground">{collab.brandName}</p>
-                                    <p className="text-xs text-foreground/60">{collab.year}</p>
                                 </div>
                                 <Star className="w-3 h-3 text-accent fill-accent" />
                             </div>
                         ))}
-                        {collaborations.length > 4 && (
-                            <p className="text-center text-xs text-foreground/50 italic py-1">
-                                + {collaborations.length - 4} more campaigns
-                            </p>
-                        )}
+                    </div>
+
+                    <div className="mt-3 p-3 bg-primary/5 border border-primary/20 rounded-lg">
+                        <p className="text-xs text-foreground/80 italic leading-tight">
+                            Selected for {category} with strong engagement metrics and audience alignment.
+                        </p>
                     </div>
 
                     <div className="mt-4 pt-4 border-t-2 border-border/10">
