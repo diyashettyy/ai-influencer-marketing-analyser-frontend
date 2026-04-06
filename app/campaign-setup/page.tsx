@@ -332,6 +332,7 @@ export default function CampaignSetupPage() {
 
   const canProceed =
     campaignName.trim() &&
+    campaignBudget.trim() &&
     descriptionValid &&
     ageGroup.trim() &&
     location.trim() &&
@@ -464,13 +465,14 @@ export default function CampaignSetupPage() {
                 <div>
                   <div className="flex justify-between mb-2">
                     <label className="block text-sm font-semibold text-foreground">Campaign Budget (USD)</label>
-                    <span className="text-xs text-foreground/50 font-medium">Optional · max $5,000,000</span>
+                    <span className="text-xs text-foreground/50 font-medium">max $5,000,000</span>
                   </div>
                   <input
                     type="number"
                     value={campaignBudget}
                     min={0}
                     max={5000000}
+                    required
                     onChange={(e) => {
                       const raw = e.target.value
                       const num = parseFloat(raw)

@@ -16,9 +16,9 @@ function ResultsContent() {
 
   // Color palette that cycles for cards beyond #2 and #3
   const cardColors = [
-    { bg: 'bg-secondary/8', border: 'border-secondary', badge: 'bg-secondary text-secondary-foreground', avatar: 'bg-pastel-blue', accent: 'bg-secondary/5 border-secondary/20', accentIcon: 'text-secondary' },
-    { bg: 'bg-accent/8', border: 'border-accent', badge: 'bg-accent text-accent-foreground', avatar: 'bg-pastel-yellow', accent: 'bg-accent/5 border-accent/20', accentIcon: 'text-accent' },
-    { bg: 'bg-primary/8', border: 'border-primary', badge: 'bg-primary text-primary-foreground', avatar: 'bg-pastel-pink', accent: 'bg-primary/5 border-primary/20', accentIcon: 'text-primary' },
+    { bg: 'bg-secondary/8 dark:bg-secondary/12', border: 'border-secondary dark:border-secondary/60', badge: 'bg-secondary text-secondary-foreground dark:bg-secondary/90', avatar: 'bg-pastel-blue dark:bg-secondary/25 dark:border-secondary/45', accent: 'bg-secondary/5 border-secondary/20 dark:bg-secondary/12 dark:border-secondary/35', accentIcon: 'text-secondary' },
+    { bg: 'bg-accent/8 dark:bg-background', border: 'border-accent dark:border-amber-300/35', badge: 'bg-accent text-accent-foreground dark:bg-amber-300/18 dark:text-amber-100 dark:border-amber-200/35', avatar: 'bg-pastel-yellow dark:bg-amber-300/16 dark:border-amber-200/35', accent: 'bg-accent/5 border-accent/20 dark:bg-amber-300/8 dark:border-amber-200/20', accentIcon: 'text-accent dark:text-amber-200' },
+    { bg: 'bg-primary/8 dark:bg-primary/12', border: 'border-primary dark:border-primary/60', badge: 'bg-primary text-primary-foreground dark:bg-primary/85 dark:text-foreground', avatar: 'bg-pastel-pink dark:bg-primary/22 dark:border-primary/40', accent: 'bg-primary/5 border-primary/20 dark:bg-primary/10 dark:border-primary/35', accentIcon: 'text-primary' },
   ]
 
   const rankLabels = (rank: number) => {
@@ -68,12 +68,12 @@ function ResultsContent() {
               {/* Left: Avatar + Rank */}
               <div className="relative flex flex-col items-center justify-center p-8 md:p-10 md:w-72 bg-primary/8 border-b-2 md:border-b-0 md:border-r-2 border-border/30">
                 <div className="absolute top-4 left-4 md:top-6 md:left-6">
-                  <span className="inline-block bg-primary text-primary-foreground px-4 py-1.5 rounded-full font-black text-xs uppercase tracking-widest border-2 border-foreground shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                  <span className="inline-block bg-primary text-primary-foreground px-4 py-1.5 rounded-full font-black text-xs uppercase tracking-widest border-2 border-foreground dark:border-primary/40 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.08)]">
                     #1 Top Pick
                   </span>
                 </div>
 
-                <div className="w-28 h-28 mt-6 md:mt-4 rounded-full border-3 border-foreground bg-pastel-pink flex items-center justify-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] group-hover:rotate-3 transition-transform duration-300">
+                <div className="w-28 h-28 mt-6 md:mt-4 rounded-full border-3 border-foreground dark:border-primary/45 bg-pastel-pink dark:bg-primary/22 flex items-center justify-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.08)] group-hover:rotate-3 transition-transform duration-300">
                   <span className="font-serif text-5xl font-bold text-foreground">
                     {hero.name.charAt(0)}
                   </span>
@@ -94,7 +94,7 @@ function ResultsContent() {
                       <h2 className="font-serif text-2xl sm:text-3xl font-bold text-foreground mb-1">{hero.name}</h2>
                       <p className="text-foreground/50 font-medium">{hero.handle}</p>
                     </div>
-                    <span className="inline-block self-start px-4 py-1.5 bg-pastel-pink/50 border-2 border-border rounded-full text-xs font-black text-foreground uppercase tracking-wide shadow-[2px_2px_0px_0px_var(--border)]">
+                    <span className="inline-block self-start px-4 py-1.5 bg-pastel-pink/50 dark:bg-primary/18 dark:border-primary/35 border-2 border-border rounded-full text-xs font-black text-foreground uppercase tracking-wide shadow-[2px_2px_0px_0px_var(--border)]">
                       {hero.category}
                     </span>
                   </div>

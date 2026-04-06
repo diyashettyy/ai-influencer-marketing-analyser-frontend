@@ -17,7 +17,7 @@ export function InfluencerCard({ id, name, handle, followers, engagement, catego
     <div className={`flex flex-col p-6 bg-card rounded-2xl border-2 border-foreground shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.1)] hover:-translate-y-1 transition-all h-full`}>
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3 min-w-0">
-          <div className="p-2 bg-pastel-yellow border-2 border-foreground rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+          <div className="p-2 bg-pastel-yellow dark:bg-accent/20 dark:border-accent/40 border-2 border-foreground rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.08)]">
             <Users className="w-5 h-5 text-foreground" />
           </div>
           <div className="min-w-0">
@@ -27,7 +27,7 @@ export function InfluencerCard({ id, name, handle, followers, engagement, catego
         </div>
       </div>
 
-      <div className="mb-4 inline-block px-3 py-1 bg-pastel-green border border-foreground rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+      <div className="mb-4 inline-block px-3 py-1 bg-pastel-green dark:bg-emerald-400/15 dark:border-emerald-300/30 border border-foreground rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.08)]">
         <span className="text-xs font-bold text-foreground uppercase tracking-wide">{category}</span>
       </div>
 

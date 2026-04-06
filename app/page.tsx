@@ -215,13 +215,22 @@ Track engagement, audience interaction, and campaign impact in seconds.
 
       {/* Footer */}
       <footer className="px-6 py-8 bg-card border-t border-border">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-foreground/70 mb-4 md:mb-0 font-medium italic">© 2026 THE SOCIAL ANIMAL. All rights reserved.</p>
-          <div className="flex gap-6">
-            <button className="text-sm hover:text-primary transition-colors font-medium">Privacy</button>
-            <button className="text-sm hover:text-primary transition-colors font-medium">Terms</button>
-            <button className="text-sm hover:text-primary transition-colors font-medium">Contact</button>
+        <div className="max-w-6xl mx-auto flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="text-left">
+            <p className="text-sm text-foreground/70 font-medium italic">© 2026 THE SOCIAL ANIMAL. All rights reserved.</p>
           </div>
+
+          <nav className="flex flex-wrap items-center gap-x-6 gap-y-3 md:justify-end" aria-label="Footer navigation">
+            <Link href="/campaign-setup" className="text-sm hover:text-primary transition-colors font-medium">
+              Campaign Setup
+            </Link>
+            <Link href="/influencer-history" className="text-sm hover:text-primary transition-colors font-medium">
+              Gallery
+            </Link>
+            <Link href="/about" className="text-sm hover:text-primary transition-colors font-medium">
+              About
+            </Link>
+          </nav>
         </div>
       </footer>
     </main>

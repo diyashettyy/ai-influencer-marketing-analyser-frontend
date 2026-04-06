@@ -46,12 +46,12 @@ export function HistoryCueCard({ id, name, handle, category, followers, engageme
                         <div>
                             <h3 className="font-serif text-2xl font-bold text-foreground mb-1">{name}</h3>
                             <p className="text-foreground/60 font-medium text-sm mb-3">{handle}</p>
-                            <span className="inline-block px-3 py-1 bg-secondary/20 border border-border/50 rounded-full text-xs font-bold text-foreground uppercase tracking-wide">
+                            <span className="inline-block px-3 py-1 mb-4 bg-secondary/20 border border-border/50 rounded-full text-xs font-bold text-foreground uppercase tracking-wide">
                                 {category}
                             </span>
                         </div>
 
-                        <div className="flex w-full justify-between items-center px-4 pt-4 border-t border-border/50">
+                        <div className="flex w-full justify-between items-center px-4 pt-4 pb-4 border-t border-border/50">
                             <div className="flex flex-col items-center">
                                 <span className="text-xs text-foreground/60 font-bold uppercase">Followers</span>
                                 <span className="font-bold text-lg">{(followers / 1000).toFixed(0)}K</span>

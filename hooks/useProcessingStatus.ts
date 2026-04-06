@@ -11,7 +11,7 @@ export function useProcessingStatus(isProcessing: boolean) {
 
     const interval = setInterval(() => {
       setCurrentMessageIndex((prev) => (prev + 1) % PROCESSING_MESSAGES.length)
-    }, 2000)
+    }, 5000)
 
     return () => clearInterval(interval)
   }, [isProcessing])

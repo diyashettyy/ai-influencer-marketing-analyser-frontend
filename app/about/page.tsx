@@ -80,24 +80,13 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* Section 3: Unique Value (USP Highlight) */}
-            <section className="py-12 sm:py-20 bg-foreground text-background overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-900/20 to-primary/10" />
-                <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-                    <h2 className="font-serif text-2xl sm:text-3xl md:text-5xl font-bold leading-tight mb-8">
-                        “Focused recommendations instead of overwhelming data — <span className="text-primary">clarity over complexity.</span>”
-                    </h2>
-                    <div className="flex justify-center gap-2">
-                        {[1, 2, 3].map((_, i) => (
-                            <div key={i} className={`w-12 h-16 bg-white/10 rounded-lg border border-white/10 backdrop-blur-sm transform translate-y-${i * 2} opacity-${100 - (i * 20)}`} />
-                        ))}
-                    </div>
-                </div>
-            </section>
-
             {/* Section 4: Tech Stack Showcase */}
-            <section className="py-16 sm:py-24 px-4 sm:px-6 bg-background">
-                <div className="max-w-6xl mx-auto">
+            <section className="relative py-16 sm:py-24 px-4 sm:px-6 bg-background overflow-hidden">
+                <div className="absolute inset-0 bg-grid-pattern" />
+                <div className="absolute inset-0 bg-background/86" />
+                <div className="absolute top-0 right-0 w-56 h-56 bg-primary/8 rounded-full blur-3xl -z-0" />
+                <div className="absolute bottom-0 left-12 w-64 h-64 bg-secondary/8 rounded-full blur-3xl -z-0" />
+                <div className="max-w-6xl mx-auto relative z-10">
                     <h2 className="font-serif text-3xl font-bold text-foreground text-center mb-12">Built With Modern Tech</h2>
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
                         {[
@@ -119,8 +108,12 @@ export default function AboutPage() {
             </section>
 
             {/* Section 5: The Journey */}
-            <section className="py-24 px-6 bg-background">
-                <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <section className="relative py-24 px-6 bg-background overflow-hidden">
+                <div className="absolute inset-0 bg-grid-pattern" />
+                <div className="absolute inset-0 bg-background/86" />
+                <div className="absolute top-0 right-0 w-56 h-56 bg-primary/8 rounded-full blur-3xl -z-0" />
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/8 rounded-full blur-3xl -z-0" />
+                <div className="max-w-6xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div>
                         <h2 className="font-serif text-3xl font-bold text-foreground mb-8">The Journey</h2>
                         <div className="space-y-8">
@@ -145,21 +138,25 @@ export default function AboutPage() {
                         </div>
                     </div>
 
-                    <div className="bg-gradient-to-br from-card to-primary/5 p-10 rounded-3xl border border-border/20">
-                        <h3 className="font-serif text-2xl font-bold text-foreground mb-6">Design Philosophy</h3>
-                        <ul className="space-y-4">
-                            {[
-                                'Minimal UI that reduces cognitive load',
-                                'High readability with curated typography',
-                                'Fully responsive for modern workflows',
-                                'Smooth micro-interactions for delight'
-                            ].map((item, i) => (
-                                <li key={i} className="flex items-center gap-3 text-foreground/80">
-                                    <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
-                                    <span>{item}</span>
-                                </li>
-                            ))}
-                        </ul>
+                    <div className="relative overflow-hidden rounded-3xl border-2 border-border bg-card/90 p-10 shadow-[6px_6px_0px_0px_var(--border)]">
+                        <div className="absolute inset-0 bg-grid-pattern opacity-40" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5" />
+                        <div className="relative z-10">
+                            <h3 className="font-serif text-2xl font-bold text-foreground mb-6">Design Philosophy</h3>
+                            <ul className="space-y-4">
+                                {[
+                                    'Minimal UI that reduces cognitive load',
+                                    'High readability with curated typography',
+                                    'Fully responsive for modern workflows',
+                                    'Smooth micro-interactions for delight'
+                                ].map((item, i) => (
+                                    <li key={i} className="flex items-center gap-3 text-foreground/80">
+                                        <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
+                                        <span>{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -188,7 +185,7 @@ export default function AboutPage() {
                                 name: 'Heerali G',
                                 role: 'Backend Developer',
                                 theme: 'bg-secondary/20',
-                                desc: 'Building clean and maintainable AI logic that analyzes sentiment using VADER and BERT to choose influencers.',
+                                desc: 'Passionate about building seamless AI-powered web applications by integrating frontend and backend systems. Combining expertise in API integration and data handling to create efficient, scalable, and user-friendly web experiences.',
                                 links: {
                                     github: 'https://github.com/Heerali-G',
                                     linkedin: 'https://www.linkedin.com/in/heerali-g-9712562b3'
@@ -207,7 +204,7 @@ export default function AboutPage() {
                             },
                             {
                                 name: 'Preethi',
-                                role: 'Database Programmer',
+                                role: 'Backend Developer',
                                 theme: 'bg-primary/20',
                                 desc: 'Building clean, well-structured datasets and scalable databases that power AI models and smart digital solutions.',
                                 links: {
@@ -217,9 +214,9 @@ export default function AboutPage() {
                             },
                             {
                                 name: 'Inchara Y N',
-                                role: 'Integration Developer',
+                                role: 'Backend Developer',
                                 theme: 'bg-secondary/20',
-                                desc: 'Integrating the frontend with the backend system to ensure smooth data flow and seamless communication between modules.',
+                                desc: 'Building clean and maintainable AI logic that analyzes sentiment using VADER and BERT to choose influencers.',
                                 links: {
                                     github: 'https://github.com/incharayn',
                                     linkedin: 'https://www.linkedin.com/in/incharayn/'
