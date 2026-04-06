@@ -42,7 +42,7 @@ export default function AboutPage() {
                         {[
                             { title: 'Vision', text: 'Helping brands instantly connect with the most relevant influencers using data-driven intelligence.' },
                             { title: 'Problem', text: 'Existing influencer tools are cluttered, slow, and overwhelming for quick campaign decisions.' },
-                            { title: 'Solution', text: 'A focused AI system that analyzes engagement and relevance to recommend only the top 3 best-fit influencers.' }
+                            { title: 'Solution', text: 'A focused AI system that analyzes engagement and relevance to recommend only the top 10 best-fit influencers.' }
                         ].map((item, i) => (
                             <div key={i} className="p-6 bg-card/60 backdrop-blur-sm rounded-2xl border border-border/20 hover:bg-card/90 transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md group">
                                 <h3 className="font-serif text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">{item.title}</h3>
@@ -118,9 +118,9 @@ export default function AboutPage() {
                         <h2 className="font-serif text-3xl font-bold text-foreground mb-8">The Journey</h2>
                         <div className="space-y-8">
                             {[
-                                { title: 'Challenge', desc: 'Overcoming performance bottlenecks in real-time data visualization.' },
-                                { title: 'Adaptation', desc: 'Scaling UI components for a seamless experience across all devices.' },
-                                { title: 'Refinement', desc: 'Iterating on data presentation to ensure immediate readability.' },
+                                { title: 'Challenge', desc: 'Making sense of scattered influencer data and identifying the right fit for campaigns.' },
+                                { title: 'Adaptation', desc: 'Building an intuitive system to analyze, compare, and simplify influencer insights.' },
+                                { title: 'Refinement', desc: 'Continuously improving data presentation for clear, quick, and confident decision-making.' },
                             ].map((step, i) => (
                                 <div key={i} className="flex gap-4 group">
                                     <div className="flex flex-col items-center">

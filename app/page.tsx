@@ -168,30 +168,30 @@ Track engagement, audience interaction, and campaign impact in seconds.
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="stagger-fade-1">
             <AIInsightBox
-              title="Accurate Predictions"
-              content="Our AI model has been trained on thousands of campaigns to provide"
-              highlight="99.2% accurate ROI predictions"
+              title="Data-Driven Insights"
+              content="Our AI analyzes influencer performance using real campaign patterns to"
+              highlight="help you make informed decisions"
             />
           </div>
           <div className="stagger-fade-2">
             <AIInsightBox
               title="Real-time Analysis"
-              content="Get comprehensive insights in under"
-              highlight="30 seconds"
+              content="Access detailed influencer insights and comparisons"
+              highlight="instantly"
             />
           </div>
           <div className="stagger-fade-3">
             <AIInsightBox
               title="Competitive Intelligence"
               content="Compare influencers side-by-side to find the"
-              highlight="best fit for your brand"
+              highlight="identify the best match for your campaign goals"
             />
           </div>
           <div className="stagger-fade-4">
             <AIInsightBox
-              title="Actionable Insights"
-              content="Receive specific recommendations to maximize"
-              highlight="campaign ROI"
+              title="Actionable Recommendations"
+              content="Receive clear, practical suggestions to"
+              highlight="improve campaign performance and audience reach"
             />
           </div>
         </div>
