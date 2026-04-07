@@ -49,16 +49,16 @@ export default function InfluencerHistoryPage({ params }: { params: Promise<{ id
                 <div className="bg-card rounded-2xl border-2 border-foreground p-5 sm:p-8 mb-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.1)] stagger-fade-2">
                     <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
                         {/* Profile Image / Placeholder */}
-                        <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-foreground bg-pastel-yellow flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex-shrink-0">
-                            <span className="font-serif text-4xl font-bold text-foreground">{influencer.name.charAt(0)}</span>
+                        <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-foreground bg-pastel-yellow flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(226,232,240,0.55)] flex-shrink-0">
+                            <span className="font-serif text-4xl font-bold text-foreground dark:text-black">{influencer.name.charAt(0)}</span>
                         </div>
 
                         <div className="flex-grow grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-6 w-full">
                             <div>
                                 <h2 className="font-serif text-2xl font-bold text-foreground mb-1">{influencer.name}</h2>
                                 <p className="text-foreground/60 font-medium mb-3">{influencer.handle}</p>
-                                <div className="inline-block px-3 py-1 bg-pastel-green border border-foreground rounded-full">
-                                    <span className="text-xs font-bold text-foreground uppercase tracking-wide">{influencer.category}</span>
+                                <div className="inline-block px-3 py-1 bg-emerald-200 border border-emerald-700 dark:bg-emerald-400/20 dark:border-emerald-300/40 rounded-full">
+                                    <span className="text-xs font-bold text-emerald-950 dark:text-emerald-100 uppercase tracking-wide">{influencer.category}</span>
                                 </div>
                             </div>
 

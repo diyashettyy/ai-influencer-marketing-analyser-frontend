@@ -22,7 +22,7 @@ function ProcessingContent() {
         }
         return prev + 1
       })
-    }, 300) // 30 seconds total
+    }, 100) // 10 seconds total
 
     return () => clearInterval(interval)
   }, [])

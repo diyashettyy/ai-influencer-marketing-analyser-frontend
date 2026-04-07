@@ -17,7 +17,7 @@ function ResultsContent() {
   // Color palette that cycles for cards beyond #2 and #3
   const cardColors = [
     { bg: 'bg-secondary/8 dark:bg-secondary/12', border: 'border-secondary dark:border-secondary/60', badge: 'bg-secondary text-secondary-foreground dark:bg-secondary/90', avatar: 'bg-pastel-blue dark:bg-secondary/25 dark:border-secondary/45', accent: 'bg-secondary/5 border-secondary/20 dark:bg-secondary/12 dark:border-secondary/35', accentIcon: 'text-secondary' },
-    { bg: 'bg-accent/8 dark:bg-background', border: 'border-accent dark:border-amber-300/35', badge: 'bg-accent text-accent-foreground dark:bg-amber-300/18 dark:text-amber-100 dark:border-amber-200/35', avatar: 'bg-pastel-yellow dark:bg-amber-300/16 dark:border-amber-200/35', accent: 'bg-accent/5 border-accent/20 dark:bg-amber-300/8 dark:border-amber-200/20', accentIcon: 'text-accent dark:text-amber-200' },
+    { bg: 'bg-accent/8 dark:bg-background', border: 'border-accent dark:border-amber-300/35', badge: 'bg-accent text-accent-foreground dark:bg-amber-300/18 dark:text-amber-100 dark:border-amber-200/35', avatar: 'bg-pastel-yellow dark:bg-amber-300/16 dark:border-amber-200/35', initialText: 'dark:text-black', avatarShadow: 'dark:shadow-[4px_4px_0px_0px_rgba(226,232,240,0.55)]', accent: 'bg-accent/5 border-accent/20 dark:bg-amber-300/8 dark:border-amber-200/20', accentIcon: 'text-accent dark:text-amber-200' },
     { bg: 'bg-primary/8 dark:bg-primary/12', border: 'border-primary dark:border-primary/60', badge: 'bg-primary text-primary-foreground dark:bg-primary/85 dark:text-foreground', avatar: 'bg-pastel-pink dark:bg-primary/22 dark:border-primary/40', accent: 'bg-primary/5 border-primary/20 dark:bg-primary/10 dark:border-primary/35', accentIcon: 'text-primary' },
   ]
 
@@ -113,8 +113,8 @@ function ResultsContent() {
                     </div>
                     <div className="bg-background rounded-xl p-4 border-2 border-border shadow-[3px_3px_0px_0px_var(--border)] text-center group-hover:shadow-[4px_4px_0px_0px_var(--border)] transition-shadow">
                       <Star className="w-4 h-4 text-accent mx-auto mb-1" />
-                      <p className="font-serif text-2xl font-bold text-foreground">9.2</p>
-                      <p className="text-xs text-foreground/50 font-bold uppercase mt-1">AI Score</p>
+                      <p className="font-serif text-2xl font-bold text-foreground">92%</p>
+                      <p className="text-xs text-foreground/50 font-bold uppercase mt-1">Engagement</p>
                     </div>
                   </div>
 
@@ -170,8 +170,8 @@ function ResultsContent() {
 
                   {/* Top section: avatar + info */}
                   <div className="flex items-center gap-5 mt-3 mb-5">
-                    <div className={`w-16 h-16 rounded-full border-2 border-foreground ${colors.avatar} flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 group-hover:rotate-3 transition-transform duration-300`}>
-                      <span className="font-serif text-2xl font-bold text-foreground">
+                    <div className={`w-16 h-16 rounded-full border-2 border-foreground ${colors.avatar} ${colors.avatarShadow ?? ''} flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 group-hover:rotate-3 transition-transform duration-300`}>
+                      <span className={`font-serif text-2xl font-bold text-foreground ${colors.initialText ?? ''}`}>
                         {influencer.name.charAt(0)}
                       </span>
                     </div>

@@ -27,8 +27,8 @@ export function InfluencerCard({ id, name, handle, followers, engagement, catego
         </div>
       </div>
 
-      <div className="mb-4 inline-block px-3 py-1 bg-pastel-green dark:bg-emerald-400/15 dark:border-emerald-300/30 border border-foreground rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.08)]">
-        <span className="text-xs font-bold text-foreground uppercase tracking-wide">{category}</span>
+      <div className="mb-4 inline-block px-3 py-1 bg-emerald-200 border border-emerald-700 dark:bg-emerald-400/20 dark:border-emerald-300/40 rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.08)]">
+        <span className="text-xs font-bold text-emerald-950 dark:text-emerald-100 uppercase tracking-wide">{category}</span>
       </div>
 
       <div className="space-y-3 mb-4">
