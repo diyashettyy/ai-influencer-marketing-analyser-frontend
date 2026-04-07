@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display, Lilita_One } from 'next/font/google'
+import { Delius, Playfair_Display, Lilita_One, Dancing_Script } from 'next/font/google'
 
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { LayoutShell } from '@/components/navigation/LayoutShell'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const delius = Delius({ weight: '400', subsets: ['latin'], variable: '--font-inter' })
 const playfairDisplay = Playfair_Display({ subsets: ['latin'], variable: '--font-serif' })
 const lilitaOne = Lilita_One({ weight: '400', subsets: ['latin'], variable: '--font-brand' })
+const dancingScript = Dancing_Script({ subsets: ['latin'], variable: '--font-script', weight: ['400', '700'] })
 
 export const metadata: Metadata = {
   title: 'THE SOCIAL ANIMAL',
@@ -28,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfairDisplay.variable} ${lilitaOne.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${delius.variable} ${playfairDisplay.variable} ${lilitaOne.variable} ${dancingScript.variable}`} suppressHydrationWarning>
       <body className="font-sans antialiased min-h-screen bg-background">
         <ThemeProvider
           attribute="class"

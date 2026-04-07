@@ -2,7 +2,7 @@
 
 import { useState, use } from 'react'
 import Link from 'next/link'
-import { ArrowLeft, MapPin, Users, TrendingUp, Calendar, ArrowUpRight, Filter, Sparkles } from 'lucide-react'
+import { ArrowLeft, MapPin, Users, TrendingUp, ArrowUpRight, Filter, Sparkles } from 'lucide-react'
 import { EngagementChart } from '@/components/charts/EngagementChart'
 import { INFLUENCER_HISTORY_DATA } from '@/lib/constants'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
@@ -96,9 +96,9 @@ export default function InfluencerHistoryPage({ params }: { params: Promise<{ id
                             <div className="flex flex-col justify-center">
                                 <div className="flex items-center gap-2 text-foreground/60 text-sm mb-1">
                                     <Sparkles className="w-4 h-4" />
-                                    Engagement Rate
+                                    AI Score
                                 </div>
-                                <p className="font-serif text-2xl font-bold text-foreground">{influencer.engagement}%</p>
+                                <p className="font-serif text-2xl font-bold text-foreground">{influencer.engagement}</p>
                                 <span className="text-xs text-foreground/50">Top 5% in category</span>
                             </div>
 
@@ -108,7 +108,6 @@ export default function InfluencerHistoryPage({ params }: { params: Promise<{ id
                                     Location
                                 </div>
                                 <p className="font-bold text-foreground">{influencer.location || 'Global'}</p>
-                                <span className="text-xs text-foreground/50">Joined {influencer.joinDate || '2023'}</span>
                             </div>
                         </div>
                     </div>
@@ -222,40 +221,34 @@ export default function InfluencerHistoryPage({ params }: { params: Promise<{ id
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {(filteredCollaborations && filteredCollaborations.length > 0) ? filteredCollaborations.map((collab: any) => (
-                            <div key={collab.id} className="bg-card rounded-xl border border-border p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
-                                <div className="flex items-center justify-between mb-4">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center font-bold text-secondary-foreground border border-secondary/30">
-                                            {collab.brandLogo}
-                                        </div>
-                                        <div>
+                            <div key={collab.id} className="bg-card rounded-xl border border-border overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group flex flex-col">
+                                <div className="p-6 flex-1">
+                                    <div className="flex items-center justify-between mb-4">
+                                        <div className="flex items-center gap-3">
+                                            <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center font-bold text-secondary-foreground border border-secondary/30 flex-shrink-0">
+                                                {collab.brandLogo}
+                                            </div>
                                             <h4 className="font-bold text-foreground">{collab.brandName}</h4>
-                                            <p className="text-xs text-foreground/60">{collab.date}</p>
                                         </div>
+                                        <span className="text-xs font-bold bg-muted px-2 py-1 rounded-md">{collab.campaignType}</span>
                                     </div>
-                                    <span className="text-xs font-bold bg-muted px-2 py-1 rounded-md">{collab.year}</span>
+
+                                    <div>
+                                        <div className="w-full h-1 bg-muted rounded-full overflow-hidden">
+                                            <div className="h-full bg-green-400 rounded-full" style={{ width: `${collab.sentiment}%` }}></div>
+                                        </div>
+                                        <p className="text-xs text-right mt-1 font-bold text-green-600 dark:text-green-400">{collab.sentiment}% Sentiment</p>
+                                    </div>
                                 </div>
 
-                                <div className="mb-4">
-                                    <p className="text-sm font-medium text-foreground mb-1">{collab.campaignType}</p>
-                                    <div className="w-full h-1 bg-muted rounded-full overflow-hidden">
-                                        <div className="h-full bg-green-400 rounded-full" style={{ width: `${collab.sentiment}%` }}></div>
-                                    </div>
-                                    <p className="text-xs text-right mt-1 font-bold text-green-600 dark:text-green-400">{collab.sentiment}% Sentiment</p>
-                                </div>
-
-                                <div className="grid grid-cols-3 gap-2 py-3 border-t border-border bg-muted/20 -mx-6 -mb-6 px-6 mt-4 rounded-b-xl">
+                                <div className="grid grid-cols-2 gap-2 px-6 py-3 border-t border-border bg-muted/20">
                                     <div className="text-center">
                                         <p className="text-xs text-foreground/60 mb-1">Reach</p>
                                         <p className="font-bold text-foreground text-sm">{collab.reach}</p>
                                     </div>
                                     <div className="text-center border-l border-border/50">
-                                        <p className="text-xs text-foreground/60 mb-1">Eng.</p>
+                                        <p className="text-xs text-foreground/60 mb-1">Engagement</p>
                                         <p className="font-bold text-foreground text-sm">{collab.engagement}%</p>
-                                    </div>
-                                    <div className="text-center border-l border-border/50">
-                                        <p className="text-xs text-foreground/60 mb-1">Conv.</p>
-                                        <p className="font-bold text-foreground text-sm">{collab.conversions}</p>
                                     </div>
                                 </div>
                             </div>

@@ -108,8 +108,8 @@ function ResultsContent() {
                     </div>
                     <div className="bg-background rounded-xl p-4 border-2 border-border shadow-[3px_3px_0px_0px_var(--border)] text-center group-hover:shadow-[4px_4px_0px_0px_var(--border)] transition-shadow">
                       <TrendingUp className="w-4 h-4 text-primary mx-auto mb-1" />
-                      <p className="font-serif text-2xl font-bold text-primary">{hero.engagement}%</p>
-                      <p className="text-xs text-foreground/50 font-bold uppercase mt-1">Engagement</p>
+                      <p className="font-serif text-2xl font-bold text-primary">{hero.engagement}</p>
+                      <p className="text-xs text-foreground/50 font-bold uppercase mt-1">AI Score</p>
                     </div>
                     <div className="bg-background rounded-xl p-4 border-2 border-border shadow-[3px_3px_0px_0px_var(--border)] text-center group-hover:shadow-[4px_4px_0px_0px_var(--border)] transition-shadow">
                       <Star className="w-4 h-4 text-accent mx-auto mb-1" />
@@ -193,8 +193,8 @@ function ResultsContent() {
                     </div>
                     <div className="bg-card rounded-xl p-3 text-center border-2 border-border shadow-[2px_2px_0px_0px_var(--border)]">
                       <TrendingUp className="w-3.5 h-3.5 text-primary mx-auto mb-1" />
-                      <p className="font-serif text-xl font-bold text-primary">{influencer.engagement}%</p>
-                      <p className="text-[10px] text-foreground/50 font-bold uppercase mt-0.5">Engagement</p>
+                      <p className="font-serif text-xl font-bold text-primary">{influencer.engagement}</p>
+                      <p className="text-[10px] text-foreground/50 font-bold uppercase mt-0.5">AI Score</p>
                     </div>
                   </div>
 

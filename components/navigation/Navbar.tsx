@@ -34,7 +34,7 @@ export function Navbar({ onMenuToggle }: NavbarProps) {
         </button>
 
         <Link href="/" className="flex items-center gap-2 sm:gap-3 hover-lift group">
-          <div className="relative w-12 h-12 sm:w-16 sm:h-16 transition-transform duration-300 group-hover:scale-105">
+          <div className="relative w-12 h-12 sm:w-16 sm:h-16 transition-transform duration-300 group-hover:scale-105 flex-shrink-0">
             {/* Side-view sheep logo */}
             <svg viewBox="0 0 150 95" className="w-full h-full text-foreground drop-shadow-[2px_2px_0px_rgba(0,0,0,0.5)]" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
               {/* Body */}
@@ -55,7 +55,11 @@ export function Navbar({ onMenuToggle }: NavbarProps) {
               <path d="M 100 72 L 109 72 L 108 95 C 108 99, 101 99, 101 95 Z" className="fill-background" />
             </svg>
           </div>
-          <span className="font-brand text-xl sm:text-2xl font-normal text-foreground tracking-tight lowercase pt-1 hidden sm:block">the social animal</span>
+          <span className="hidden sm:flex flex-row items-center whitespace-nowrap leading-none gap-1">
+            <span className="font-serif font-black text-[1.2rem] tracking-[0.13em] uppercase text-foreground">THE</span>
+            <span className="font-script font-bold text-[2rem] text-foreground leading-none tracking-normal">Social</span>
+            <span className="font-serif font-black text-[1.2rem] tracking-[0.13em] uppercase text-foreground">ANIMAL</span>
+          </span>
         </Link>
       </div>
 

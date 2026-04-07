@@ -43,9 +43,9 @@ export function InfluencerCard({ id, name, handle, followers, engagement, catego
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2 text-foreground text-opacity-70">
             <TrendingUp className="w-4 h-4 text-primary" />
-            <span className="text-sm">Engagement</span>
+            <span className="text-sm">AI Score</span>
           </div>
-          <span className="font-semibold text-primary">{engagement.toFixed(1)}%</span>
+          <span className="font-semibold text-primary">{engagement.toFixed(2)}</span>
         </div>
       </div>
 

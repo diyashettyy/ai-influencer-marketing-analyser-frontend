@@ -317,6 +317,7 @@ function SearchableDropdown({
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function CampaignSetupPage() {
+  const [brandName, setBrandName] = useState('')
   const [campaignName, setCampaignName] = useState('')
   const [campaignBudget, setCampaignBudget] = useState('')
   const [budgetError, setBudgetError] = useState(false)
@@ -331,6 +332,7 @@ export default function CampaignSetupPage() {
     description.trim().length >= 20 && descriptionWordCount >= 4
 
   const canProceed =
+    brandName.trim() &&
     campaignName.trim() &&
     campaignBudget.trim() &&
     descriptionValid &&
@@ -362,6 +364,18 @@ export default function CampaignSetupPage() {
               <h2 className="font-serif text-2xl font-bold text-foreground mb-6">Campaign Details</h2>
 
               <div className="space-y-6">
+                {/* Brand Name */}
+                <div>
+                  <label className="block text-sm font-semibold text-foreground mb-2">Brand Name</label>
+                  <input
+                    type="text"
+                    value={brandName}
+                    onChange={(e) => setBrandName(e.target.value)}
+                    placeholder="e.g., Nike"
+                    className="w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground placeholder:text-foreground/30"
+                  />
+                </div>
+
                 {/* Campaign Name */}
                 <div>
                   <label className="block text-sm font-semibold text-foreground mb-2">Campaign Name</label>
@@ -488,7 +502,7 @@ export default function CampaignSetupPage() {
                       }
                     }}
                     placeholder="e.g., 5000"
-                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground placeholder:text-foreground/30 ${
+                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground placeholder:text-foreground/30 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${
                       budgetError ? 'border-amber-400' : 'border-border'
                     }`}
                   />
@@ -509,6 +523,11 @@ export default function CampaignSetupPage() {
               <h3 className="font-serif text-xl font-bold text-foreground mb-6">Campaign Summary</h3>
 
               <div className="space-y-6">
+                <div>
+                  <p className="text-sm text-foreground/60 mb-1">Brand Name</p>
+                  <p className="font-semibold text-foreground">{brandName || 'Not set'}</p>
+                </div>
+
                 <div>
                   <p className="text-sm text-foreground/60 mb-1">Campaign Name</p>
                   <p className="font-semibold text-foreground">{campaignName || 'Not set'}</p>

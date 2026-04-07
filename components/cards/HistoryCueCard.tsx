@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Star, TrendingUp, Users } from 'lucide-react'
 
@@ -10,6 +9,7 @@ interface Collaboration {
     brandName: string
     brandLogo: string
     year: number
+    campaignType?: string
 }
 
 interface HistoryCueCardProps {
@@ -72,16 +72,17 @@ export function HistoryCueCard({ id, name, handle, category, followers, engageme
                         Collaboration History
                     </h3>
 
-                    <div className="flex-grow overflow-y-auto space-y-3 custom-scrollbar pr-1">
-                        {collaborations.slice(0, 1).map((collab) => (
-                            <div key={collab.id} className="flex items-center gap-3 bg-secondary/5 p-2 rounded-lg border border-border/20">
-                                <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold text-xs border border-border/30">
+                    <div className="flex-grow overflow-y-auto space-y-2 custom-scrollbar pr-1">
+                        {collaborations.map((collab) => (
+                            <div key={collab.id} className="flex items-center gap-3 bg-secondary/5 p-3 rounded-lg border border-border/20">
+                                <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold text-xs border border-border/30 flex-shrink-0">
                                     {collab.brandLogo}
                                 </div>
-                                <div className="flex-grow">
-                                    <p className="font-bold text-sm text-foreground">{collab.brandName}</p>
+                                <div className="flex-grow min-w-0">
+                                    <p className="font-bold text-sm text-foreground truncate">{collab.brandName}</p>
+                                    {collab.campaignType && <p className="text-xs text-foreground/60 mt-0.5 truncate">{collab.campaignType}</p>}
                                 </div>
-                                <Star className="w-3 h-3 text-accent fill-accent" />
+                                <Star className="w-3 h-3 text-accent fill-accent flex-shrink-0" />
                             </div>
                         ))}
                     </div>

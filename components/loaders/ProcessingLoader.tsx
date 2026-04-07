@@ -27,13 +27,13 @@ export function ProcessingLoader({ progress }: ProcessingLoaderProps) {
             />
 
             {/* Center Icon */}
-            <div className="relative z-10 bg-pastel-yellow border-2 border-foreground p-4 rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <div className="relative z-10 bg-pastel-yellow dark:bg-card dark:border-primary/50 border-2 border-foreground p-4 rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.1)]">
                 {getIcon()}
             </div>
 
             {/* Floating particles */}
-            <div className="absolute top-0 right-0 w-4 h-4 bg-pastel-pink border border-foreground rounded-full animate-ping" style={{ animationDelay: '0.2s' }} />
-            <div className="absolute bottom-4 left-2 w-3 h-3 bg-pastel-blue border border-foreground rounded-full animate-ping" style={{ animationDelay: '0.5s' }} />
+            <div className="absolute top-0 right-0 w-4 h-4 bg-pastel-pink dark:bg-accent/50 border border-foreground dark:border-accent/50 rounded-full animate-ping" style={{ animationDelay: '0.2s' }} />
+            <div className="absolute bottom-4 left-2 w-3 h-3 bg-pastel-blue dark:bg-primary/50 border border-foreground dark:border-primary/50 rounded-full animate-ping" style={{ animationDelay: '0.5s' }} />
         </div>
     )
 }

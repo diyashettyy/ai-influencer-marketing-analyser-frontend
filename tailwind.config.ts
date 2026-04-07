@@ -70,6 +70,7 @@ const config: Config = {
         sans: ['var(--font-inter)'],
         serif: ['var(--font-serif)'],
         brand: ['var(--font-brand)', 'cursive'],
+        script: ['var(--font-script)', 'cursive'],
       },
       borderRadius: {
         lg: 'var(--radius)',
