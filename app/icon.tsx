@@ -22,8 +22,8 @@ export default function Icon() {
       >
         <svg
           viewBox="0 0 150 95"
-          width="76"
-          height="76"
+          width="60"
+          height="60"
           fill="none"
           stroke="#2d2d2d"
           strokeWidth="4"
