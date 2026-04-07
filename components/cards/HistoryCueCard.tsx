@@ -24,6 +24,7 @@ interface HistoryCueCardProps {
 
 export function HistoryCueCard({ id, name, handle, category, followers, engagement, collaborations }: HistoryCueCardProps) {
     const [isFlipped, setIsFlipped] = useState(false)
+    const featuredCollaboration = collaborations[0]
 
     return (
         <div
@@ -72,24 +73,28 @@ export function HistoryCueCard({ id, name, handle, category, followers, engageme
                         Collaboration History
                     </h3>
 
-                    <div className="flex-grow overflow-y-auto space-y-2 custom-scrollbar pr-1">
-                        {collaborations.map((collab) => (
-                            <div key={collab.id} className="flex items-center gap-3 bg-secondary/5 p-3 rounded-lg border border-border/20">
-                                <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold text-xs border border-border/30 flex-shrink-0">
-                                    {collab.brandLogo}
+                    <div className="flex-grow flex items-start">
+                        {featuredCollaboration ? (
+                            <div className="w-full bg-secondary/5 p-4 rounded-lg border border-border/20 min-h-[88px] flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold text-xs border border-border/30 flex-shrink-0">
+                                    {featuredCollaboration.brandLogo}
                                 </div>
                                 <div className="flex-grow min-w-0">
-                                    <p className="font-bold text-sm text-foreground truncate">{collab.brandName}</p>
-                                    {collab.campaignType && <p className="text-xs text-foreground/60 mt-0.5 truncate">{collab.campaignType}</p>}
+                                    <p className="font-bold text-sm text-foreground truncate">{featuredCollaboration.brandName}</p>
+                                    {featuredCollaboration.campaignType && <p className="text-xs text-foreground/60 mt-1 truncate">{featuredCollaboration.campaignType}</p>}
                                 </div>
-                                <Star className="w-3 h-3 text-accent fill-accent flex-shrink-0" />
+                                <Star className="w-3.5 h-3.5 text-accent fill-accent flex-shrink-0" />
                             </div>
-                        ))}
+                        ) : (
+                            <div className="w-full bg-secondary/5 p-4 rounded-lg border border-border/20 min-h-[88px] flex items-center justify-center text-sm text-foreground/60">
+                                No collaboration history available.
+                            </div>
+                        )}
                     </div>
 
                     <div className="mt-3 p-3 bg-primary/5 border border-primary/20 rounded-lg">
                         <p className="text-xs text-foreground/80 italic leading-tight">
-                            Selected for {category} with strong engagement metrics and audience alignment.
+                            Selected for {category} category with strong engagement metrics and audience alignment.
                         </p>
                     </div>
 

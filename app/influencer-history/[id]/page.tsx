@@ -1,9 +1,8 @@
 'use client'
 
-import { useState, use } from 'react'
+import { use } from 'react'
 import Link from 'next/link'
-import { ArrowLeft, MapPin, Users, TrendingUp, ArrowUpRight, Filter, Sparkles } from 'lucide-react'
-import { EngagementChart } from '@/components/charts/EngagementChart'
+import { ArrowLeft, MapPin, Users, TrendingUp, ArrowUpRight, Sparkles } from 'lucide-react'
 import { INFLUENCER_HISTORY_DATA } from '@/lib/constants'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 
@@ -11,10 +10,6 @@ export default function InfluencerHistoryPage({ params }: { params: Promise<{ id
     const resolvedParams = use(params)
     const id = parseInt(resolvedParams.id)
     const influencer = INFLUENCER_HISTORY_DATA[id as keyof typeof INFLUENCER_HISTORY_DATA]
-
-    const [filterYear, setFilterYear] = useState('All')
-    const [filterBrand, setFilterBrand] = useState('All')
-    const [sortOrder, setSortOrder] = useState('Newest')
 
     if (!influencer) {
         return (
@@ -27,18 +22,7 @@ export default function InfluencerHistoryPage({ params }: { params: Promise<{ id
         )
     }
 
-    // Filter and Sort Logic
-    const filteredCollaborations = (influencer.collaborations || [])
-        .filter(collab => filterYear === 'All' || collab.year.toString() === filterYear)
-        .filter(collab => filterBrand === 'All' || collab.brandName === filterBrand)
-        .sort((a, b) => {
-            if (sortOrder === 'Newest') return new Date(b.date).getTime() - new Date(a.date).getTime()
-            if (sortOrder === 'Highest Reach') return parseFloat(b.reach) - parseFloat(a.reach)
-            return 0
-        })
-
-    const uniqueBrands = Array.from(new Set((influencer.collaborations || []).map(c => c.brandName)))
-    const uniqueYears = Array.from(new Set((influencer.collaborations || []).map(c => c.year))).sort((a, b) => b - a)
+    const collaborations = [...(influencer.collaborations || [])].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
     return (
         <main className="min-h-screen bg-background pb-12">
@@ -58,10 +42,6 @@ export default function InfluencerHistoryPage({ params }: { params: Promise<{ id
                                 Historical performance insights and brand collaborations for <span className="font-semibold text-foreground">{influencer.name}</span>.
                             </p>
                         </div>
-                        <button className="whitespace-nowrap px-6 py-3 bg-foreground text-background border-2 border-foreground rounded-full font-bold text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] transition-all active:translate-y-0.5 active:shadow-none flex items-center gap-2">
-                            View Detailed Analytics
-                            <ArrowUpRight className="w-4 h-4" />
-                        </button>
                     </div>
                 </div>
 
@@ -89,7 +69,6 @@ export default function InfluencerHistoryPage({ params }: { params: Promise<{ id
                                 </div>
                                 <p className="font-serif text-2xl font-bold text-foreground">{(influencer.followers / 1000).toFixed(0)}K</p>
                                 <span className="text-xs text-green-600 dark:text-green-400 font-bold flex items-center gap-1">
-                                    <TrendingUp className="w-3 h-3" /> +12% this month
                                 </span>
                             </div>
 
@@ -191,36 +170,12 @@ export default function InfluencerHistoryPage({ params }: { params: Promise<{ id
 
                 {/* 4. Brand Collaboration Section */}
                 <div id="collaborations" className="stagger-fade-4">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
+                    <div className="mb-6">
                         <h2 className="font-serif text-3xl font-bold text-foreground">Brand Collaborations</h2>
-
-                        <div className="flex flex-wrap gap-3">
-                            <div className="relative">
-                                <Filter className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-                                <select
-                                    value={filterYear}
-                                    onChange={(e) => setFilterYear(e.target.value)}
-                                    className="pl-9 pr-4 py-2 border border-border rounded-lg bg-card text-foreground text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20 appearance-none"
-                                >
-                                    <option value="All">All Years</option>
-                                    {uniqueYears.map(year => <option key={year} value={year}>{year}</option>)}
-                                </select>
-                            </div>
-                            <div className="relative">
-                                <select
-                                    value={filterBrand}
-                                    onChange={(e) => setFilterBrand(e.target.value)}
-                                    className="px-4 py-2 border border-border rounded-lg bg-card text-foreground text-sm font-medium focus:outline-none focus:ring-2 focus:ring-primary/20"
-                                >
-                                    <option value="All">All Brands</option>
-                                    {uniqueBrands.map(brand => <option key={brand} value={brand}>{brand}</option>)}
-                                </select>
-                            </div>
-                        </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {(filteredCollaborations && filteredCollaborations.length > 0) ? filteredCollaborations.map((collab: any) => (
+                        {(collaborations && collaborations.length > 0) ? collaborations.map((collab: any) => (
                             <div key={collab.id} className="bg-card rounded-xl border border-border overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group flex flex-col">
                                 <div className="p-6 flex-1">
                                     <div className="flex items-center justify-between mb-4">
