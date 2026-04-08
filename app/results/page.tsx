@@ -39,7 +39,7 @@ function ResultsContent() {
   const rankLabels = (rank: number) => {
     if (rank === 2) return 'Runner Up'
     if (rank === 3) return 'Strong Pick'
-    return `Pick #${rank}`
+    return `Pick ${rank}`
   }
 
   return (
