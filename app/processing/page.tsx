@@ -2,15 +2,20 @@
 
 import { Suspense, useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { ArrowLeft } from 'lucide-react'
 import { ProcessingLoader } from '@/components/loaders/ProcessingLoader'
 import { useProcessingStatus } from '@/hooks/useProcessingStatus'
 
 function ProcessingContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const count = searchParams.get('count') || '5'
+  const count = searchParams.get('count') || '3'
   const { currentMessage } = useProcessingStatus(true)
   const [progress, setProgress] = useState(0)
+
+  const handleBackToCampaign = () => {
+    router.push('/campaign-setup?restore=1')
+  }
 
   useEffect(() => {
     // Simulate progress over time
@@ -37,24 +42,35 @@ function ProcessingContent() {
 
   return (
     <main className="min-h-screen bg-background flex flex-col">
-
       <div className="flex-1 flex flex-col items-center justify-center px-6">
         <div className="w-full max-w-md text-center">
+          <div className="mb-8 flex justify-center">
+            <button
+              type="button"
+              onClick={handleBackToCampaign}
+              className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Back to Create Campaign
+            </button>
+          </div>
+
           <ProcessingLoader progress={progress} />
 
           <h2 className="font-serif text-2xl font-bold text-foreground mb-4 animate-pulse">
             {currentMessage}
           </h2>
 
-          <div className="w-full bg-foreground/10 h-2 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-primary transition-all duration-300 ease-out shadow-[0_0_10px_rgba(var(--primary),0.5)]"
-              style={{ width: `${progress}%` }}
-            />
+          <div className="rounded-2xl border border-border/50 bg-card/70 px-5 py-4 shadow-sm backdrop-blur-sm">
+            <p className="text-sm font-medium text-foreground/70">
+              Building your shortlist and preparing the final recommendations.
+            </p>
+            <div className="mt-3 flex items-center justify-center gap-2">
+              <span className="h-2.5 w-2.5 rounded-full bg-primary animate-bounce [animation-delay:-0.2s]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-secondary animate-bounce [animation-delay:-0.1s]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-accent animate-bounce" />
+            </div>
           </div>
-          <p className="mt-2 text-foreground/60 text-sm font-medium">
-            {progress}% Complete
-          </p>
         </div>
       </div>
     </main>

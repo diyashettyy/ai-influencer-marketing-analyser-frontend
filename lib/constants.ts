@@ -21,6 +21,8 @@ export const ANIMATION_DURATIONS = {
   slower: 800,
 } as const
 
+export const CAMPAIGN_SETUP_DRAFT_STORAGE_KEY = 'campaign-setup-draft'
+
 // Sample Data for Influencer Analysis
 export const SAMPLE_INFLUENCERS = [
   {
@@ -596,7 +598,6 @@ export const PROCESSING_MESSAGES = [
   'Analyzing influencer profiles...',
   'Evaluating engagement metrics...',
   'Assessing audience demographics...',
-  'Calculating ROI potential...',
   'Generating AI insights...',
   'Finalizing recommendations...',
 ]

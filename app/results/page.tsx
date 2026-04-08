@@ -1,18 +1,33 @@
 'use client'
 
 import Link from 'next/link'
-import React, { Suspense } from 'react'
-import { useSearchParams } from 'next/navigation'
+import React, { Suspense, useEffect } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { ArrowRight, CheckCircle, TrendingUp, Users, History, Star, Zap } from 'lucide-react'
 import { SAMPLE_INFLUENCERS } from '@/lib/constants'
 
 function ResultsContent() {
+  const router = useRouter()
   const searchParams = useSearchParams()
-  const rawCount = Number(searchParams.get('count')) || 5
+  const rawCount = Number(searchParams.get('count')) || 3
   const count = Math.max(3, Math.min(10, rawCount))
   const influencers = SAMPLE_INFLUENCERS.slice(0, count)
   const hero = influencers[0]
   const rest = influencers.slice(1)
+
+  useEffect(() => {
+    window.history.pushState({ resultsGuard: true }, '', window.location.href)
+
+    const handlePopState = () => {
+      router.replace('/campaign-setup')
+    }
+
+    window.addEventListener('popstate', handlePopState)
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState)
+    }
+  }, [router])
 
   // Color palette that cycles for cards beyond #2 and #3
   const cardColors = [

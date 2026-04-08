@@ -1,8 +1,20 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { ChevronRight, ChevronDown, Search, X } from 'lucide-react'
+import { CAMPAIGN_SETUP_DRAFT_STORAGE_KEY } from '@/lib/constants'
+
+type CampaignDraft = {
+  brandName: string
+  campaignName: string
+  campaignBudget: string
+  ageGroup: string
+  location: string
+  niche: string
+  influencerCount: number
+  description: string
+}
 
 // ─── Alphabetically-sorted locations ─────────────────────────────────────────
 const ALL_LOCATIONS = [
@@ -203,9 +215,10 @@ function SearchableDropdown({
   const containerRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const filtered = items.filter((item) =>
-    item.toLowerCase().includes(query.toLowerCase())
-  )
+  const normalizedQuery = query.trim().toLowerCase()
+  const filtered = normalizedQuery
+    ? items.filter((item) => item.toLowerCase().startsWith(normalizedQuery))
+    : items
 
   // Close on outside click
   useEffect(() => {
@@ -317,6 +330,7 @@ function SearchableDropdown({
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function CampaignSetupPage() {
+  const router = useRouter()
   const [brandName, setBrandName] = useState('')
   const [campaignName, setCampaignName] = useState('')
   const [campaignBudget, setCampaignBudget] = useState('')
@@ -324,7 +338,7 @@ export default function CampaignSetupPage() {
   const [ageGroup, setAgeGroup] = useState('')
   const [location, setLocation] = useState('')
   const [niche, setNiche] = useState('')
-  const [influencerCount, setInfluencerCount] = useState(5)
+  const [influencerCount, setInfluencerCount] = useState(3)
   const [description, setDescription] = useState('')
 
   const descriptionWordCount = description.trim().split(/\s+/).filter(Boolean).length
@@ -339,6 +353,60 @@ export default function CampaignSetupPage() {
     ageGroup.trim() &&
     location.trim() &&
     niche.trim()
+
+  useEffect(() => {
+    const shouldRestore = new URLSearchParams(window.location.search).get('restore') === '1'
+
+    if (!shouldRestore) {
+      return
+    }
+
+    const savedDraft = window.sessionStorage.getItem(CAMPAIGN_SETUP_DRAFT_STORAGE_KEY)
+
+    if (!savedDraft) {
+      return
+    }
+
+    try {
+      const draft = JSON.parse(savedDraft) as CampaignDraft
+      setBrandName(draft.brandName)
+      setCampaignName(draft.campaignName)
+      setCampaignBudget(draft.campaignBudget)
+      setAgeGroup(draft.ageGroup)
+      setLocation(draft.location)
+      setNiche(draft.niche)
+      setInfluencerCount(draft.influencerCount)
+      setDescription(draft.description)
+      setBudgetError(false)
+      window.sessionStorage.removeItem(CAMPAIGN_SETUP_DRAFT_STORAGE_KEY)
+    } catch {
+      window.sessionStorage.removeItem(CAMPAIGN_SETUP_DRAFT_STORAGE_KEY)
+    }
+  }, [])
+
+  const handleStartAnalysis = () => {
+    if (!canProceed) {
+      return
+    }
+
+    const draft: CampaignDraft = {
+      brandName,
+      campaignName,
+      campaignBudget,
+      ageGroup,
+      location,
+      niche,
+      influencerCount,
+      description,
+    }
+
+    window.sessionStorage.setItem(
+      CAMPAIGN_SETUP_DRAFT_STORAGE_KEY,
+      JSON.stringify(draft)
+    )
+
+    router.push(`/processing?count=${influencerCount}`)
+  }
 
   return (
     <main className="min-h-screen bg-background">
@@ -560,16 +628,17 @@ export default function CampaignSetupPage() {
                   <p className="font-semibold text-foreground">{influencerCount}</p>
                 </div>
 
-                <Link
-                  href={canProceed ? `/processing?count=${influencerCount}` : '#'}
-                  onClick={(e) => !canProceed && e.preventDefault()}
+                <button
+                  type="button"
+                  onClick={handleStartAnalysis}
+                  disabled={!canProceed}
                   className={`w-full py-3 px-2 rounded-lg font-bold text-center transition-all text-sm sm:text-base flex items-center justify-center ${canProceed
                     ? 'bg-primary text-primary-foreground hover-lift active:scale-95 cursor-pointer shadow-md'
                     : 'bg-muted text-muted-foreground cursor-not-allowed border border-border/10'
                     }`}
                 >
                   Start Analysis
-                </Link>
+                </button>
               </div>
             </div>
           </div>
