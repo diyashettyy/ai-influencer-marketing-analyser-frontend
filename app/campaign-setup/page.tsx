@@ -187,6 +187,18 @@ const ALL_LOCATIONS = [
 ]
 
 // ─── Alphabetically-sorted niches ────────────────────────────────────────────
+const ALL_AGE_GROUPS = [
+  '18–30',
+  '18–34',
+  '18–35',
+  '18–40',
+  '20–40',
+  '22–35',
+  '24–40',
+  '25–40',
+  '28–40',
+]
+
 const ALL_NICHES = [
   'Beauty',
   'Family',
@@ -460,23 +472,12 @@ export default function CampaignSetupPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-semibold text-foreground mb-2">Targeted Age Group</label>
-                    <select
+                    <SearchableDropdown
                       value={ageGroup}
-                      onChange={(e) => setAgeGroup(e.target.value)}
-                      className={`w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-background font-sans ${ageGroup ? 'text-foreground' : 'text-foreground/50'}`}
-                    >
-                      <option value="" disabled className="bg-background text-foreground/50 font-sans">Select Age Group</option>
-                      <option value="18-30" className="bg-background text-foreground font-sans">18–30</option>
-                      <option value="18-34" className="bg-background text-foreground font-sans">18–34</option>
-                      <option value="18-35" className="bg-background text-foreground font-sans">18–35</option>
-                      <option value="18-40" className="bg-background text-foreground font-sans">18–40</option>
-                      <option value="20-40" className="bg-background text-foreground font-sans">20–40</option>
-                      <option value="22-35" className="bg-background text-foreground font-sans">22–35</option>
-                      <option value="24-40" className="bg-background text-foreground font-sans">24–40</option>
-                      <option value="25-40" className="bg-background text-foreground font-sans">25–40</option>
-                      <option value="28-40" className="bg-background text-foreground font-sans">28–40</option>
-                      <option value="All Ages" className="bg-background text-foreground font-sans">All Ages</option>
-                    </select>
+                      onChange={setAgeGroup}
+                      items={ALL_AGE_GROUPS}
+                      placeholder="Select Age Group"
+                    />
                   </div>
 
                   <div>
