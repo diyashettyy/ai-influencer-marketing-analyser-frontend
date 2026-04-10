@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowLeft, Sparkles } from 'lucide-react'
+import { ArrowLeft, Trash2 } from 'lucide-react'
 import { HistoryCueCard } from '@/components/cards/HistoryCueCard'
 import { INFLUENCER_HISTORY_DATA } from '@/lib/constants'
 
@@ -25,6 +25,17 @@ export default function InfluencerHistoryGallery() {
                     <p className="text-base sm:text-xl text-foreground/80 max-w-2xl mx-auto text-balance bg-card border-2 border-border p-4 sm:p-6 rounded-2xl shadow-[8px_8px_0px_0px_var(--border)] rotate-1 hover:rotate-0 transition-transform">
                         Explore our network of top-tier influencers and their brand collaboration history.
                     </p>
+                </div>
+
+                {/* Clear Data Button */}
+                <div className="flex justify-end mb-6">
+                    <button
+                        type="button"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-destructive/10 text-destructive border border-destructive/20 font-semibold text-sm hover:bg-destructive/20 transition-colors"
+                    >
+                        <Trash2 className="w-4 h-4" />
+                        Clear Data
+                    </button>
                 </div>
 
                 {/* Gallery Grid */}
