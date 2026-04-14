@@ -3,17 +3,19 @@
 import Link from 'next/link'
 import React, { Suspense, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { ArrowRight, CheckCircle, TrendingUp, Users, History, Star, Zap } from 'lucide-react'
+import { ArrowRight, CheckCircle, TrendingUp, Users, History, Star, Zap, AlertCircle } from 'lucide-react'
 import { SAMPLE_INFLUENCERS } from '@/lib/constants'
 
 function ResultsContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const rawCount = Number(searchParams.get('count')) || 3
-  const count = Math.max(3, Math.min(10, rawCount))
-  const influencers = SAMPLE_INFLUENCERS.slice(0, count)
+  const requestedCount = Math.max(3, Math.min(10, rawCount))
+  const availableCount = Math.min(requestedCount, SAMPLE_INFLUENCERS.length)
+  const influencers = SAMPLE_INFLUENCERS.slice(0, availableCount)
   const hero = influencers[0]
   const rest = influencers.slice(1)
+  const hasFewerMatches = availableCount < requestedCount
 
   useEffect(() => {
     window.history.pushState({ resultsGuard: true }, '', window.location.href)
@@ -60,7 +62,7 @@ function ResultsContent() {
             <span className="relative inline-block">
               <span className="absolute inset-0 bg-primary/20 rotate-1 scale-110 rounded-sm -z-10 blur-sm opacity-50" />
               <span className="relative bg-primary/20 px-4 py-1 skew-x-[-8deg] inline-block border-2 border-border shadow-[4px_4px_0px_0px_var(--border)]">
-                Top {count}
+                Top {availableCount}
               </span>
             </span>{' '}
             Influencers
@@ -69,6 +71,15 @@ function ResultsContent() {
           <p className="text-base sm:text-lg text-foreground/70 max-w-xl mx-auto mt-4 sm:mt-6 font-medium">
             Hand-picked by our AI for maximum campaign impact.
           </p>
+
+          {hasFewerMatches && (
+            <div className="mt-6 inline-flex items-center gap-2.5 px-5 py-3 rounded-xl bg-accent/15 border-2 border-accent/30 shadow-[4px_4px_0px_0px_var(--border)]">
+              <AlertCircle className="w-4 h-4 text-accent flex-shrink-0" />
+              <span className="text-sm font-bold text-foreground">
+                Only {availableCount} of {requestedCount} requested influencers matched your campaign criteria.
+              </span>
+            </div>
+          )}
         </div>
       </section>
 

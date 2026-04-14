@@ -150,6 +150,24 @@
   border-radius: 4px;
 }
 
+/* Subtle scrollbar for card content */
+.card-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.card-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.card-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(var(--foreground) / 0.15);
+  border-radius: 4px;
+}
+
+.card-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--foreground) / 0.25);
+}
+
 /* Retro Grid Pattern */
 .bg-grid-pattern {
   background-image:

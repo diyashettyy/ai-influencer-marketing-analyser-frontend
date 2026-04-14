@@ -24,7 +24,13 @@ interface HistoryCueCardProps {
 
 export function HistoryCueCard({ id, name, handle, category, followers, engagement, collaborations }: HistoryCueCardProps) {
     const [isFlipped, setIsFlipped] = useState(false)
-    const featuredCollaboration = collaborations[0]
+
+    // Responsive name sizing based on character count
+    const nameClass = name.length > 18
+        ? 'font-serif text-lg font-bold text-foreground mb-1 leading-tight'
+        : name.length > 12
+            ? 'font-serif text-xl font-bold text-foreground mb-1 leading-tight'
+            : 'font-serif text-2xl font-bold text-foreground mb-1'
 
     return (
         <div
@@ -45,7 +51,7 @@ export function HistoryCueCard({ id, name, handle, category, followers, engageme
 
                     <div className="h-1/2 p-6 flex flex-col items-center text-center justify-between bg-card relative">
                         <div>
-                            <h3 className="font-serif text-2xl font-bold text-foreground mb-1">{name}</h3>
+                            <h3 className={nameClass}>{name}</h3>
                             <p className="text-foreground/60 font-medium text-sm mb-3">{handle}</p>
                             <span className="inline-block px-3 py-1 mb-4 bg-secondary/20 border border-border/50 rounded-full text-xs font-bold text-foreground uppercase tracking-wide">
                                 {category}
@@ -73,17 +79,21 @@ export function HistoryCueCard({ id, name, handle, category, followers, engageme
                         Collaboration History
                     </h3>
 
-                    <div className="flex-grow flex items-start">
-                        {featuredCollaboration ? (
-                            <div className="w-full bg-secondary/5 p-4 rounded-lg border border-border/20 min-h-[88px] flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold text-xs border border-border/30 flex-shrink-0">
-                                    {featuredCollaboration.brandLogo}
-                                </div>
-                                <div className="flex-grow min-w-0">
-                                    <p className="font-bold text-sm text-foreground truncate">{featuredCollaboration.brandName}</p>
-                                    {featuredCollaboration.campaignType && <p className="text-xs text-foreground/60 mt-1 truncate">{featuredCollaboration.campaignType}</p>}
-                                </div>
-                                <Star className="w-3.5 h-3.5 text-accent fill-accent flex-shrink-0" />
+                    <div className="flex-grow overflow-y-auto min-h-0 pr-1 card-scrollbar">
+                        {collaborations.length > 0 ? (
+                            <div className="flex flex-col gap-2">
+                                {collaborations.map((collab) => (
+                                    <div key={collab.id} className="w-full bg-secondary/5 p-3 rounded-lg border border-border/20 flex items-center gap-3">
+                                        <div className="w-9 h-9 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold text-[10px] border border-border/30 flex-shrink-0">
+                                            {collab.brandLogo}
+                                        </div>
+                                        <div className="flex-grow min-w-0">
+                                            <p className="font-bold text-sm text-foreground truncate">{collab.brandName}</p>
+                                            {collab.campaignType && <p className="text-xs text-foreground/60 mt-0.5 truncate">{collab.campaignType}</p>}
+                                        </div>
+                                        <Star className="w-3.5 h-3.5 text-accent fill-accent flex-shrink-0" />
+                                    </div>
+                                ))}
                             </div>
                         ) : (
                             <div className="w-full bg-secondary/5 p-4 rounded-lg border border-border/20 min-h-[88px] flex items-center justify-center text-sm text-foreground/60">
