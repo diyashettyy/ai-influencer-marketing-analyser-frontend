@@ -19,10 +19,11 @@ interface HistoryCueCardProps {
     category: string
     followers: number
     engagement: number
+    aiScore: number
     collaborations: Collaboration[]
 }
 
-export function HistoryCueCard({ id, name, handle, category, followers, engagement, collaborations }: HistoryCueCardProps) {
+export function HistoryCueCard({ id, name, handle, category, followers,aiScore, engagement, collaborations }: HistoryCueCardProps) {
     const [isFlipped, setIsFlipped] = useState(false)
 
     // Responsive name sizing based on character count
@@ -66,7 +67,7 @@ export function HistoryCueCard({ id, name, handle, category, followers, engageme
                             <div className="h-8 w-px bg-foreground/20"></div>
                             <div className="flex flex-col items-center">
                                 <span className="text-xs text-foreground/60 font-bold uppercase">AI Score</span>
-                                <span className="font-bold text-lg text-primary">{engagement}</span>
+                                <span className="font-bold text-lg text-primary">{aiScore.toFixed(2)}</span>
                             </div>
                         </div>
 
@@ -76,7 +77,7 @@ export function HistoryCueCard({ id, name, handle, category, followers, engageme
                 {/* Back of Card */}
                 <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-card text-foreground rounded-2xl border-2 border-border shadow-[8px_8px_0px_0px_var(--border)] p-6 flex flex-col">
                     <h3 className="font-serif text-xl font-bold text-primary mb-4 text-center border-b-2 border-primary/20 pb-2">
-                        Collaboration History
+                        Top Collaboration 
                     </h3>
 
                     <div className="flex-grow overflow-y-auto min-h-0 pr-1 card-scrollbar">
@@ -103,9 +104,21 @@ export function HistoryCueCard({ id, name, handle, category, followers, engageme
                     </div>
 
                     <div className="mt-3 p-3 bg-primary/5 border border-primary/20 rounded-lg">
-                        <p className="text-xs text-foreground/80 italic leading-tight">
-                            Selected for {category} category with strong engagement metrics and audience alignment.
-                        </p>
+                        <p className="text-[11px] text-foreground/70 italic mt-1 leading-tight">
+                            {aiScore >= 0.7
+                                ? `An excellent match with an engagement score: ${engagement} and very strong audience alignment.`
+                                : aiScore >= 0.6
+                                ? `A very strong match with an engagementscore: ${engagement} and excellent audience relevance.`
+                                : aiScore >= 0.55
+                                ? `A strong match with an engagement score: ${engagement} and well-aligned audience reach.`
+                                : aiScore >= 0.5
+                                ? `A fairly good match with an engagement score: ${engagement} and decent audience interaction.`
+                                : aiScore >= 0.4
+                                ? `A moderate match with an engagement score: ${engagement} and balanced audience alignment.`
+                                : aiScore >= 0.3
+                                ? `A weak match with an engagement score: ${engagement} and limited audience relevance.`
+                                : `A poor match with an engagement score: ${engagement} and minimal audience alignment.`}
+                            </p>
                     </div>
 
                     <div className="mt-4 pt-4 border-t-2 border-border/10">

@@ -18,27 +18,33 @@ function ProcessingContent() {
   }
 
   useEffect(() => {
-    // Simulate progress over time
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval)
-          return 100
-        }
-        return prev + 1
+    const start = Date.now()
+
+    fetch("http://127.0.0.1:5000/results")
+      .then(res => res.json())
+      .then(() => {
+        const end = Date.now()
+        const timeTaken = end - start
+
+        console.log("API Time:", timeTaken, "ms")
+
+        // instantly complete progress
+        setProgress(80)
+
+        // small delay for smooth UI transition
+        setTimeout(() => {
+          router.push(`/results?count=${count}`)
+        }, 300)
       })
-    }, 100) // 10 seconds total
+      .catch((err) => {
+        console.error("Error fetching results:", err)
+        setProgress(80)
 
-    return () => clearInterval(interval)
-  }, [])
-
-  useEffect(() => {
-    if (progress === 100) {
-      setTimeout(() => {
-        router.push(`/results?count=${count}`)
-      }, 500)
-    }
-  }, [progress, router, count])
+        setTimeout(() => {
+          router.push(`/results?count=${count}`)
+        }, 300)
+      })
+  }, [router, count])
 
   return (
     <main className="min-h-screen bg-background flex flex-col">
