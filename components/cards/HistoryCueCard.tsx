@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight, Star, TrendingUp, Users } from 'lucide-react'
+import { getInitial } from '@/lib/utils'
 
 interface Collaboration {
     id: number
@@ -46,7 +47,7 @@ export function HistoryCueCard({ id, name, handle, category, followers,aiScore, 
                     <div className="h-1/2 bg-primary flex items-center justify-center border-b-2 border-border relative overflow-hidden">
                         <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
                         <div className="w-32 h-32 rounded-full border-2 border-border bg-card shadow-[4px_4px_0px_0px_var(--border)] flex items-center justify-center z-10">
-                            <span className="font-serif text-5xl font-bold text-foreground">{name.charAt(0)}</span>
+                            <span className="font-serif text-5xl font-bold text-foreground">{getInitial(name)}</span>
                         </div>
                     </div>
 

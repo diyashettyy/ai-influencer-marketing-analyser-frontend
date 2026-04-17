@@ -4,6 +4,7 @@ import { use, useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, MapPin, Users, Sparkles } from 'lucide-react'
+import { getInitial } from '@/lib/utils'
 
 export default function InfluencerHistoryPage({ params }: { params: Promise<{ id: string }> }) {
     const resolvedParams = use(params)
@@ -135,7 +136,7 @@ const formatLocation = (loc: string) => {
 
                         <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-foreground bg-pastel-yellow flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(226,232,240,0.55)] flex-shrink-0">
                             <span className="font-serif text-4xl font-bold text-foreground dark:text-black">
-                                {influencer.name.charAt(0)}
+                                {getInitial(influencer.name)}
                             </span>
                         </div>
 

@@ -5,6 +5,7 @@ import React, { Suspense, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { ArrowRight, CheckCircle, TrendingUp, Users, History, Star, Zap, AlertCircle } from 'lucide-react'
 import { SAMPLE_INFLUENCERS } from '@/lib/constants'
+import { getInitial } from '@/lib/utils'
 
 function ResultsContent() {
   const router = useRouter()
@@ -165,7 +166,7 @@ function ResultsContent() {
                   </span>
                 </div>
                 <div className="w-28 h-28 mt-6 md:mt-4 rounded-full border-3 border-foreground dark:border-primary/45 bg-pastel-pink dark:bg-primary/22 flex items-center justify-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.08)] group-hover:rotate-3 transition-transform duration-300">
-                  <span className="font-serif text-5xl font-bold text-foreground">{hero.name.charAt(0)}</span>
+                  <span className="font-serif text-5xl font-bold text-foreground">{getInitial(hero.name)}</span>
                 </div>
                 <div className="mt-4 flex gap-2">
                   <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
@@ -240,7 +241,7 @@ function ResultsContent() {
                   <div className="flex items-center gap-5 mt-3 mb-5">
                     <div className={`w-16 h-16 rounded-full border-2 border-foreground ${colors.avatar} ${(colors as any).avatarShadow ?? ''} flex items-center justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex-shrink-0 group-hover:rotate-3 transition-transform duration-300`}>
                       <span className={`font-serif text-2xl font-bold text-foreground ${(colors as any).initialText ?? ''}`}>
-                        {influencer.name.charAt(0)}
+                        {getInitial(influencer.name)}
                       </span>
                     </div>
                     <div className="min-w-0">
